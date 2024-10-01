@@ -1,9 +1,14 @@
 $fn = 20;
 
-stamp_text = "Fops";
+stamp_text = "Brat";
 rope_width = 8;
 text_size = 15;
-base_width = 40;
+base_width = 35;
+
+//stamp_text = "Fops";
+//rope_width = 8;
+//text_size = 15;
+//base_width = 40;
 
 
 //stamp_text = "Plushie";
@@ -30,10 +35,16 @@ module rope_cut(mod=1, v=1) {
     else if (v==2) {
         translate([0, text_size/2, 20/2]) rotate([0, 90, 0]) cylinder(h=base_width+20, d=rope_cutout, center=true);
     }
-    else {
+    else if (v==3){
         translate([0, text_size/2, 20/2+2.5]) 
         rotate([0, 90, 0]) 
         scale([1.25, 1, 1])
+        cylinder(h=base_width+20, d=rope_cutout, center=true);
+    }
+    else {
+        translate([0, text_size/2, 20/2+3]) 
+        rotate([0, 90, 0]) 
+        scale([1.5, 1, 1])
         cylinder(h=base_width+20, d=rope_cutout, center=true);
     }
 }
@@ -48,7 +59,7 @@ union() {
             translate([0,text_size/2,depth/2]) cube([base_width, base_height, depth], center=true);
             cylinder(h=1, r=5);
         };                
-        rope_cut(1, v=3);
+        rope_cut(1, v=4);
         //rope_cut(-1);
     }    
 };
